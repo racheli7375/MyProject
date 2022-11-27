@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MyPeoject.Common;
 using MyProject.Mock;
-using MyProject.Repositories.Entities;
-using MyProject.Repositories.Interfaces;
-using MyProject.Repositories.Repositories;
+using MyProject.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,21 +14,21 @@ namespace MyProject.webAPI.Controllers
     [ApiController]
     public class PermissionController : ControllerBase
     {
-        private readonly IPermissionRepository _permissionRepository;
-        public PermissionController(IPermissionRepository permissionRepository)
+        private readonly IPermissionService _permissionService;
+        public PermissionController(IPermissionService permissionService)
         {
 
-            _permissionRepository = permissionRepository;
+            _permissionService = permissionService;
         }
         [HttpGet]
-        public List<Permission> Get()
+        public async Task<List<PermissionDTO>> Get()
         {
-            return _permissionRepository.GetAll();
+            return await _permissionService.GetAllAsync();
         }
         [HttpGet("{id}")]
-        public Permission Get(int id)
+        public async Task<PermissionDTO> Get(int id)
         {
-            return _permissionRepository.GetById(id);
+            return await _permissionService.GetByIdAsync(id);
         }
     }
 }

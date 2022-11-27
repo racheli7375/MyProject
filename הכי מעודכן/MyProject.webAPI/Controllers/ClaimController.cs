@@ -1,13 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MyPeoject.Common;
 using MyProject.Mock;
-using MyProject.Repositories.Entities;
-using MyProject.Repositories.Interfaces;
-using MyProject.Repositories.Repositories;
+using MyProject.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
 using System.Threading.Tasks;
 
 namespace MyProject.webAPI.Controllers
@@ -16,22 +14,22 @@ namespace MyProject.webAPI.Controllers
     [ApiController]
     public class ClaimController : ControllerBase
     {
-        private readonly IClaimRepository _claimRepository;
+        private readonly IClaimeService _claimService;
    
 
-        public ClaimController(IClaimRepository claimRepository)
+        public ClaimController(IClaimeService claimService)
         {
-            _claimRepository = claimRepository;
+            _claimService = claimService;
         }
         [HttpGet]
-        public List<Claim> Get()
+        public async Task< List<ClaimDTO>> Get()
         {
-            return _claimRepository.GetAll();
+            return await _claimService.GetAllAsync();
         }
         [HttpGet("{id}")]
-        public Claim Get(int id)
+        public async Task<ClaimDTO> Get(int id)
         {
-            return _claimRepository.GetById(id);
+            return await _claimService.GetByIdAsync(id);
         }
     }
 }
