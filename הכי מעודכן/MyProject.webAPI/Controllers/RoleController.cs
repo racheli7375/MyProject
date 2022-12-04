@@ -42,7 +42,7 @@ namespace MyProject.webAPI.Controllers
             RoleDTO r =await _roleService.UpdateAsync(new RoleDTO { Id = id, Name = name, Description = d });
             return r;
         }
-        [HttpPost]
+        //[HttpPost]
         //public async Task<RoleDTO> Post([FromBody] RoleModel model)
         //{
 
@@ -58,6 +58,7 @@ namespace MyProject.webAPI.Controllers
         //    var x = await roleTask3;
         //    return roleTask1.Result;
         //}
+
 
     }
 }

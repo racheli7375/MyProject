@@ -9,20 +9,20 @@ namespace MyProject.ConsoleApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            //Console.WriteLine("Hello World!");
 
 
-            var mock = new MockContext();
-            var db = new DbContext();
-            mock.Roles.ForEach(r =>
-            {
-                Console.WriteLine(r.ToString());
-            });
+            //var mock = new MockContext();
+            //var db = new DbContext();
+            //mock.Roles.ForEach(r =>
+            //{
+            //    Console.WriteLine(r.ToString());
+            //});
 
-            var roleRepository = new RoleRepository(db);
-            roleRepository.GetAll();
+            //var roleRepository = new RoleRepository(db);
+            //roleRepository.GetAll();
 
-            Console.ReadLine();
+            //Console.ReadLine();
         }
     }
 }

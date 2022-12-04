@@ -20,7 +20,7 @@ namespace MyProject.Repositories.Repositories
 
         public async Task<Claim> AddAsync(int id, int roleId, int  permissionId,EPolicy ePolicy)
         {
-            var c = _context.Claims.Add( new Claim{ Id = id, RoleId=roleId,PermissionId=permissionId,Policy=ePolicy});
+            var c = _context.Claims.Add( new Claim{ Id = id/*, RoleId=roleId,PermissionId=permissionId*/,Policy=ePolicy});
             await _context.SaveChangesAsync();
             return c.Entity;
         }
@@ -45,8 +45,8 @@ namespace MyProject.Repositories.Repositories
         public async Task<Claim> UpdateAsync(Claim claim)
         {
             Claim c1 = GetByIdAsync(claim.Id).Result;
-            c1.RoleId = claim.RoleId;
-            c1.PermissionId = claim.PermissionId;
+            c1.Role.Id = claim.Role.Id;
+            c1.Permission.Id = claim.Permission.Id;
             c1.Policy = claim.Policy;
             await _context.SaveChangesAsync();
             return c1;

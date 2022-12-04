@@ -6,10 +6,15 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MtProject.Context\MtProject.Context.csproj" />
     <ProjectReference Include="..\MyProject.Mock\MyProject.Mock.csproj" />
     <ProjectReference Include="..\MyProject.Repositories\MyProject.Repositories.csproj" />
     <ProjectReference Include="..\MyProject.Services\MyProject.Services.csproj" />

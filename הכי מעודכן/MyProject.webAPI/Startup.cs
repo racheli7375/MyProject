@@ -2,11 +2,13 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using MtProject.Context;
 using MyProject.Mock;
 using MyProject.Repositories.Interfaces;
 using MyProject.Repositories.Repositories;
@@ -47,7 +49,8 @@ namespace MyProject.webAPI
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MyProject.webAPI", Version = "v1" });
             });
             services.AddScoped<IRoleRepository, RoleRepository>();
-            services.AddSingleton<IContext, MockContext>();
+           
+            services.AddDbContext<IContext, MyDbContext>();
             services.AddScoped<IPermissionRepository,PermissionRepository>();
             services.AddScoped<IClaimRepository, ClaimRepository>();
             services.AddAutoMapper(typeof(Mapping));

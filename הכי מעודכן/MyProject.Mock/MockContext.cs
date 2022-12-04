@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MyProject.Mock
 {
-    public class MockContext : IContext
+    public class MockContext //: IContext
     {
         public List<Role> Roles { get; set; }//פה יהיו הנתונים מטבלת roles
         public List<Permission> Permissions { get; set; }
@@ -28,11 +28,11 @@ namespace MyProject.Mock
             Permissions.Add(new Permission { Id = 1, Name = "ViewAllTests" });
             Permissions.Add(new Permission { Id = 2, Name = "UploadTest" });
 
-            Claims.Add(new Claim { Id = 1, RoleId = 1, PermissionId = 1, Policy = EPolicy.Allow });
-            Claims.Add(new Claim { Id = 2, RoleId = 1, PermissionId = 2, Policy = EPolicy.Allow });
+            Claims.Add(new Claim { Id = 1/*, RoleId = 1, PermissionId = 1*/, Policy = EPolicy.Allow });
+            Claims.Add(new Claim { Id = 2/*, RoleId = 1, PermissionId = 2*/, Policy = EPolicy.Allow });
             
-            Claims.Add(new Claim { Id = 3, RoleId = 2, PermissionId = 1, Policy = EPolicy.Deny });
-            Claims.Add(new Claim { Id = 4, RoleId = 2, PermissionId = 2, Policy = EPolicy.Allow });
+            Claims.Add(new Claim { Id = 3/*, RoleId = 2, PermissionId = 1*/, Policy = EPolicy.Deny });
+            Claims.Add(new Claim { Id = 4/*, RoleId = 2, PermissionId = 2*/, Policy = EPolicy.Allow });
 
         }
     }
